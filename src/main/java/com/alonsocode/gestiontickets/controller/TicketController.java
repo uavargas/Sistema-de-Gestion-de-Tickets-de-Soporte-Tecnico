@@ -15,7 +15,7 @@ import java.util.List;
 public class TicketController {
 
     @Autowired
-    private ITicketService ticketService; // Inyección de dependencias del servicio instanciamos la interface ITicketService
+    private ITicketService ticketService; // Inyección de dependencias del servicio instanciamos la interfaZ ITicketService
 
     @PostMapping
     public ResponseEntity<Ticket> crearTicket(@RequestBody Ticket ticket) {
