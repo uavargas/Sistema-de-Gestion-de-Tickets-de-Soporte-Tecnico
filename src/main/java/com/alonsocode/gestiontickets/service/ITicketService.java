@@ -12,5 +12,8 @@ public interface ITicketService {
     void eliminarTicket(Long id);
     Ticket obtenerTicketId(Long id);
     List<Ticket> obtenerTickets();
+    List<Ticket> obtenerTicketsAbiertos();
+    List<Ticket> obtenerTicketsEnProceso();
+    List<Ticket> obtenerTicketsCerrados();
 
 }

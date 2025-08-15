@@ -5,6 +5,7 @@ Clase TicketRepository que gestiona los tickets
 *
 * */
 import com.alonsocode.gestiontickets.model.entity.Ticket;
+import com.alonsocode.gestiontickets.model.entity.enums.EstadoTicket;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -44,6 +45,40 @@ public class TicketRepository {
     public void eliminarTicket(Long id) {
         tickets.remove(id);
     }
+
+    //6. Obtener todos los tickets que esten abiertos
+    public List<Ticket> obtenerTicketsAbiertos() {
+        List<Ticket> ticketsAbiertos = new ArrayList<>();
+        for (Ticket ticket : tickets.values()) {
+            if (ticket.getEstado() == EstadoTicket.ABIERTO) {
+                ticketsAbiertos.add(ticket);
+            }
+        }
+        return ticketsAbiertos;
+    }
+
+    //7. Obtener todos los tickets que esten en proceso
+    public List<Ticket> obtenerTicketsEnProceso() {
+        List<Ticket> ticketsEnProceso = new ArrayList<>();
+        for (Ticket ticket : tickets.values()) {
+            if (ticket.getEstado() == EstadoTicket.EN_PROCESO) {
+                ticketsEnProceso.add(ticket);
+            }
+        }
+        return ticketsEnProceso;
+    }
+
+    //8. Obtener todos los tickets que esten cerrados
+    public List<Ticket> obtenerTicketsCerrados() {
+        List<Ticket> ticketsCerrados = new ArrayList<>();
+        for (Ticket ticket : tickets.values()) {
+            if (ticket.getEstado() == EstadoTicket.CERRADO) {
+                ticketsCerrados.add(ticket);
+            }
+        }
+        return ticketsCerrados;
+    }
+
 
 
 }

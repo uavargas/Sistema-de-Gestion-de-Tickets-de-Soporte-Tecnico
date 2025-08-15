@@ -50,7 +50,19 @@ public class TicketController {
         ticketService.eliminarTicket(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/ticketsAbiertos")
+    public ResponseEntity<List<Ticket>> obtenerTicketsAbiertos() {
+        return ResponseEntity.ok(ticketService.obtenerTicketsAbiertos());
+    }
 
+    @GetMapping("/ticketsEnProceso")
+    public ResponseEntity<List<Ticket>> obtenerTicketsEnProceso() {
+        return ResponseEntity.ok(ticketService.obtenerTicketsEnProceso());
+    }
 
+    @GetMapping("/ticketsCerrados")
+    public ResponseEntity<List<Ticket>> obtenerTicketsCerrados() {
+        return ResponseEntity.ok(ticketService.obtenerTicketsCerrados());
+    }
 
 }

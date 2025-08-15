@@ -79,6 +79,20 @@ public class TicketServiceImpl implements ITicketService {
     public List<Ticket> obtenerTickets() {
         return repository.obtenerTodosTickets();
     }
+    @Override
+    public List<Ticket> obtenerTicketsAbiertos() {
+        return repository.obtenerTicketsAbiertos();
 
+    }
 
+    @Override
+    public List<Ticket> obtenerTicketsCerrados() {
+        return repository.obtenerTicketsCerrados();
+
+    }
+    @Override
+    public List<Ticket> obtenerTicketsEnProceso() {
+        return repository.obtenerTicketsEnProceso();
+
+    }
 }
