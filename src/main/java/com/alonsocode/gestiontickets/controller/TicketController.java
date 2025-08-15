@@ -1,0 +1,56 @@
+package com.alonsocode.gestiontickets.controller;
+
+import com.alonsocode.gestiontickets.model.entity.Ticket;
+import com.alonsocode.gestiontickets.model.entity.enums.EstadoTicket;
+import com.alonsocode.gestiontickets.service.ITicketService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+@RestController
+@RequestMapping("/ticket")
+public class TicketController {
+
+    @Autowired
+    private ITicketService ticketService; // Inyección de dependencias del servicio instanciamos la interface ITicketService
+
+    @PostMapping
+    public ResponseEntity<Ticket> crearTicket(@RequestBody Ticket ticket) {
+        return ResponseEntity.ok(ticketService.crearTicket(ticket));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Ticket>> obtenerTickets() {
+        return ResponseEntity.ok(ticketService.obtenerTickets());
+    }
+
+   @GetMapping("/{id}")
+    public ResponseEntity<Ticket> obtenerTicketId(@PathVariable Long id) {
+        return ResponseEntity.ok(ticketService.obtenerTicketId(id));
+    }
+
+    @PutMapping("/{id}/estado")
+    public ResponseEntity<?> actualizarEstadoTicket(
+            @PathVariable Long id,
+            @RequestParam("estado") String estadoStr) {  // Recibe el estado como String
+        try {
+            EstadoTicket estado = EstadoTicket.valueOf(estadoStr.toUpperCase());
+            Ticket ticketActualizado = ticketService.actualizarEstadoTicket(id, estado);
+            return ResponseEntity.ok(ticketActualizado);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Estado no válido. Valores permitidos: " + Arrays.toString(EstadoTicket.values()));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarTicket(@PathVariable Long id) {
+        ticketService.eliminarTicket(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+
+}
