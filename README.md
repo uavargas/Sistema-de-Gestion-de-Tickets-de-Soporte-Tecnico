@@ -231,12 +231,6 @@ gestionTickets/
 
 **AlonsoCode** - [GitHub](https://github.com/uvargas)
 
-## 🙏 Agradecimientos
-
-- Spring Boot Team por el excelente framework
-- Comunidad Java por las mejores prácticas
-- Contribuidores del proyecto
-
 ---
 
-**¡Gracias por su retroalimentación Sistema de Gestión de Tickets! 🎉** 
+**¡Gracias por su retroalimentación al Sistema de Gestión de Tickets! 🎉** 
